@@ -1,0 +1,2 @@
+# Mobiiliohjelmointi_natiiviteknologialla
+ syksyn 2024 mobiiliohjelmointi kurssin harjoitus tehtäviä
