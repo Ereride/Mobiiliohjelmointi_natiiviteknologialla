@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.BottomAppBar
@@ -68,10 +69,10 @@ fun MainTopBar(title: String, navController: NavController) {
     TopAppBar(
         title = { Text(text = title) },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF6200EE), // Purple background
-            titleContentColor = Color.White, // White title text
-            navigationIconContentColor = Color.White, // Navigation icon color
-            actionIconContentColor = Color.White // Action icons color
+            containerColor = Color(0xFF6200EE),
+            titleContentColor = Color.White,
+            navigationIconContentColor = Color.White,
+            actionIconContentColor = Color.White
         ),
         actions = {
             IconButton(onClick = { expanded = !expanded }) {
@@ -85,15 +86,15 @@ fun MainTopBar(title: String, navController: NavController) {
                     text = { Text(text = "Info") },
                     onClick = {
 
-                    navController.navigate("Info") // Navigate to Info screen
-                    expanded = false // Close the dropdown after selection
+                    navController.navigate("Info")
+                    expanded = false
                 })
                 DropdownMenuItem(
                     text = { Text(text = "Settings") },
                     onClick = {
 
-                        navController.navigate("Settings") // Navigate to Info screen
-                        expanded = false // Close the dropdown after selection
+                        navController.navigate("Settings")
+                        expanded = false
                     })
             }
         }
@@ -107,9 +108,15 @@ fun MainTopBar(title: String, navController: NavController) {
 fun ScreenTopBar(title: String, navController: NavController) {
     TopAppBar(
         title = { Text(text = title) },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color(0xFF6200EE),
+            titleContentColor = Color.White,
+            navigationIconContentColor = Color.White,
+            actionIconContentColor = Color.White
+        ),
         navigationIcon = {
             IconButton(onClick = { navController.navigateUp() }) {
-                Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
             }
         }
     )
@@ -131,7 +138,7 @@ fun MainScreen(navController: NavController) {
 @Composable
 fun InfoScreen(navController: NavController) {
     Scaffold(
-        topBar = { MainTopBar("Info", navController) },
+        topBar = { ScreenTopBar("Info", navController) },
         content = { paddingValues ->
             Text(
                 text = "Content for Info screen",
@@ -144,7 +151,7 @@ fun InfoScreen(navController: NavController) {
 @Composable
 fun SettingsScreen(navController: NavController) {
     Scaffold(
-        topBar = { MainTopBar("Settings", navController) },
+        topBar = { ScreenTopBar("Settings", navController) },
         content = { paddingValues ->
             Text(
                 text = "Content for Settings screen",
